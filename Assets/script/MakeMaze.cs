@@ -126,11 +126,7 @@ public class MakeMaze : MonoBehaviour
         //タイマー
         timer();
 
-        //リセット
-        if (Input.GetKey(KeyCode.R))
-        {
-            SceneManager.LoadScene("START");
-        }
+        
     }
 
 

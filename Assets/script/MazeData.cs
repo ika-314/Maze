@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class MazeData : SingletonMonoBehaviour<MazeData>
 {
-    //public Transform cameraPosition;
     public int m_width = 18;
     public int m_height = 18;
     public Vector3 startPosition;
@@ -25,6 +25,10 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
     void Update()
     {
         startPosition = new Vector3((m_width / 2 - 1) * -1, -0.5f, ((int)m_height / 2 - 1) * -1);
-        //transform.position = cameraPosition.position;        
+        //リセット
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene("START");
+        }
     }
 }
