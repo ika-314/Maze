@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: c1be3fb171411499e986f43163b5e4b0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_road_object: {fileID: 500650825748799464, guid: ed2ad9f87a9ba4e78989ff7d7f0553cd, type: 3}
+  - Camera: {instanceID: 0}
+  - Goal: {fileID: 3436171961091406190, guid: 9d87878612f1d43c297ee55e2a15dc08, type: 3}
+  - player: {fileID: 6132810738683950867, guid: 89b6a2372187d4482affd25794c87555, type: 3}
+  - random: {fileID: 7798371380162198019, guid: 306eb3b6b9d424bfcaba11a74b89096e, type: 3}
+  - player_object: {instanceID: 0}
+  - AI_object: {fileID: 5685330289638808005, guid: b2437e54d3cb446edbcbefe7e1b930fb, type: 3}
+  - timertext: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
