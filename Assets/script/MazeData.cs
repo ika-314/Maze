@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MazeData : SingletonMonoBehaviour<MazeData>
 {
+    //迷路サイズ
     public int m_width = 18;
     public int m_height = 18;
+
+    //スタートポジション
     public Vector3 startPosition;
+
 
     protected override void Awake()
     {
@@ -28,7 +32,9 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
         //リセット
         if (Input.GetKey(KeyCode.R))
         {
+            
             SceneManager.LoadScene("START");
+
         }
     }
 }
