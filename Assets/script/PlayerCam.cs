@@ -21,15 +21,28 @@ public class PlayerCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            //transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y + 90, transform.rotation.z));
+            turnRight();
+        }
 
-        yRotation += mouseX;
+        //float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+        //float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f);
+        //yRotation += mouseX;
 
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        //xRotation -= mouseY;
+        //xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f);
+
+        //transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        //orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
+    private void turnRight()
+    {
+        for(int i = 0; i < 90; i++)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y + 90, transform.rotation.z));
+        }
+    }   
 }
