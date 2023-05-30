@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class MazeData : SingletonMonoBehaviour<MazeData>
@@ -13,6 +15,9 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
     //スタートポジション
     public Vector3 startPosition;
 
+    //タイマーデータ
+    public Text timertext, randomtext;
+    public float Timer = 0;
 
     protected override void Awake()
     {
