@@ -118,11 +118,15 @@ public class MakeMaze : MonoBehaviour
             //プレイアーのrigidbodyを習得
             Player_Rigidbody = Player.GetComponent<Rigidbody>();
         }
-   
+        //マウス消す
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 
     void Update()
     {
+        
         //タイマー
         timer();
 
