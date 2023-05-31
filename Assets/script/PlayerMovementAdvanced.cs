@@ -171,14 +171,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
         // on ground
         else if (grounded)
         {
-            //rb.AddRelativeFor​​ce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-            rb.AddFor​​ce(transform.TransformDirection(0,0,1));
+            rb.AddFor​​ce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         }
 
         // in air
         else if (!grounded)
         {
-            rb.AddRelativeFor​​ce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddFor​​ce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
 
         // turn gravity off while on slope
