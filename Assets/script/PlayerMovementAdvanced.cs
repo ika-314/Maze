@@ -41,7 +41,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private bool exitingSlope;
     
 
-    public Transform orientation;
+    //public Transform orientation;
 
     float horizontalInput;
     float verticalInput;
@@ -156,7 +156,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private void MovePlayer()
     {
         // calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        //moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = transform.forward * verticalInput;
 
         // on slope
         if (OnSlope() && !exitingSlope)
@@ -168,12 +169,17 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
 
         // on ground
-        else if(grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        else if (grounded)
+        {
+            //rb.AddRelativeFor​​ce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddFor​​ce(transform.TransformDirection(0,0,1));
+        }
 
         // in air
-        else if(!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        else if (!grounded)
+        {
+            rb.AddRelativeFor​​ce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
 
         // turn gravity off while on slope
         rb.useGravity = !OnSlope();
