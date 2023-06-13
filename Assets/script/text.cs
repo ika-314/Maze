@@ -40,7 +40,7 @@ public class text : MonoBehaviour
     }
     　public void dyu()
     {
-        SceneManager.LoadScene("main2");
+        SceneManager.LoadScene("Main3D");
     }
     public void height()
     {

@@ -778,7 +778,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2534125011014060931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc7e3e45cc7ae4afc803002303e63842, type: 3}
   m_Name: 
@@ -812,6 +812,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5599662020760228235, guid: 908eed6b0cde34dc7812a23fe2e286e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5599662022598250764, guid: 908eed6b0cde34dc7812a23fe2e286e6, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
