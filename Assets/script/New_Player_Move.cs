@@ -16,12 +16,18 @@ public class New_Player_Move : MonoBehaviour
     Ray back_ray;
     RaycastHit back_ray_hit;
     float ray_dis = 1;
-    
+
+    [SerializeField]
+    GameObject minmap_Camera;
+
+    Transform minCamera;
     
     // Start is called before the first frame update
     void Start()
     {
         player_rigidbody = GetComponent<Rigidbody>();
+         minCamera = minmap_Camera.GetComponent<Transform>();
+
     }
 
     // Update is called once per frame
@@ -59,5 +65,6 @@ public class New_Player_Move : MonoBehaviour
         {
             transform.rotation *= Quaternion.Euler(0, -playerRotation, 0);
         }
+        minCamera.transform.position = new Vector3(transform.position.x, 10, transform.position.z);
     }
 }
