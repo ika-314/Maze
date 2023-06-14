@@ -58,9 +58,9 @@ public class MakeMaze : MonoBehaviour
 
     Rigidbody Player_Rigidbody;
 
-    public float playerSpeed = 10;//プレイヤースピード
+    public float playerSpeed = 10;  //プレイヤースピード
 
-    public static MakeMaze instance;//関数に外部からアクセス
+    public static MakeMaze instance;    //関数に外部からアクセス
 
     public void Awake()
     {

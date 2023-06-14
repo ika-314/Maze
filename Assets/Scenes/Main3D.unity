@@ -705,9 +705,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: New_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1987082837996536618, guid: ef0c662dd34f14698a4a013e3994abe0, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1987082838623401668, guid: ef0c662dd34f14698a4a013e3994abe0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987082838623401671, guid: ef0c662dd34f14698a4a013e3994abe0, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4364000566562945461, guid: ef0c662dd34f14698a4a013e3994abe0, type: 3}
       propertyPath: m_RootOrder

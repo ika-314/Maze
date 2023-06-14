@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class New_Player_Move : MonoBehaviour
 {
-    float playerSpeed = 1;
-    float playerRotation = 90;
+
+    float playerSpeed = 1;  //プレイヤーのスピード
+    float playerRotation = 90;  //プレイヤーの回転角度
+
     Rigidbody player_rigidbody;
+
+    //レイ系
+    Ray front_ray;
+    RaycastHit front_ray_hit;
+    Ray back_ray;
+    RaycastHit back_ray_hit;
+    float ray_dis = 1;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +27,30 @@ public class New_Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        //前
+        front_ray = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(transform.position, transform.forward * ray_dis, Color.blue);
+
+        //後ろ
+        back_ray = new Ray(transform.position, -transform.forward);
+        Debug.DrawRay(transform.position, -transform.forward * ray_dis, Color.black);
+
+        //前動く
+        if (!Physics.Raycast(front_ray, out front_ray_hit, ray_dis))
         {
-            transform.position += transform.forward * playerSpeed;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                transform.position += transform.forward * playerSpeed;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        //後ろに動く
+        if(!Physics.Raycast(back_ray, out back_ray_hit, ray_dis))
         {
-            transform.position += transform.forward* -playerSpeed;
-        }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                transform.position += transform.forward * -playerSpeed;
+            }
+        }               
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.rotation *= Quaternion.Euler(0, playerRotation, 0);
