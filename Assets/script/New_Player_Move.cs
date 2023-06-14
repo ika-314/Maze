@@ -42,21 +42,36 @@ public class New_Player_Move : MonoBehaviour
         Debug.DrawRay(transform.position, -transform.forward * ray_dis, Color.black);
 
         //前動く
-        if (!Physics.Raycast(front_ray, out front_ray_hit, ray_dis))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Physics.Raycast(front_ray, out front_ray_hit, ray_dis))
+            {
+                if (front_ray_hit.collider.tag != "Wall")
+                {
+                    transform.position += transform.forward * playerSpeed;
+                }
+            }
+            else
             {
                 transform.position += transform.forward * playerSpeed;
             }
         }
         //後ろに動く
-        if(!Physics.Raycast(back_ray, out back_ray_hit, ray_dis))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Physics.Raycast(back_ray, out back_ray_hit, ray_dis))
+            {
+
+                if (back_ray_hit.collider.tag != "Wall")
+                {
+                    transform.position += transform.forward * -playerSpeed;
+                }
+            }
+            else
             {
                 transform.position += transform.forward * -playerSpeed;
             }
-        }               
+        }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.rotation *= Quaternion.Euler(0, playerRotation, 0);
