@@ -20,8 +20,6 @@ public class RightControer : MonoBehaviour
 
 
     float ray_dis = 1;
-
-    bool coll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,13 +68,7 @@ public class RightControer : MonoBehaviour
         {
 
         }
-        coll = false;
+        
     }
-    public void OnCollisionStay(Collision wall)
-    {
-        if (wall.gameObject.tag == "Wall")
-        {
-            coll = true;
-        }
-    }
+    
 }
