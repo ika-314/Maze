@@ -9,14 +9,14 @@ public class RightControer : MonoBehaviour
     Ray right_flont_ray;
     RaycastHit right_flont_ray_hit;
 
-    Ray left_flont_ray;
-    RaycastHit left_flont_ray_hit;
+    Ray foward_right_ray;
+    RaycastHit foward_right_ray_hit;
 
     Ray right_back_ray;
     RaycastHit right_back_ray_hit;
 
-    Ray left_back_ray;
-    RaycastHit left_back_ray_hit;
+    Ray foward_left_ray;
+    RaycastHit foward_left_ray_hit;
 
 
     float ray_dis = 1;
@@ -35,14 +35,16 @@ public class RightControer : MonoBehaviour
         right_flont_ray = new Ray(transform.localPosition + transform.forward * 0.4f, transform.right);
         Debug.DrawRay(transform.localPosition + transform.forward * 0.4f, transform.right * ray_dis, Color.blue);
 
-        left_flont_ray = new Ray(transform.localPosition + transform.forward * 0.4f, -transform.right);
-        Debug.DrawRay(transform.localPosition + transform.forward * 0.4f, -transform.right * ray_dis, Color.red);
+        foward_right_ray = new Ray(transform.localPosition + transform.right * 0.4f, -transform.forward);
+        Debug.DrawRay(transform.localPosition + transform.right * 0.4f, transform.forward * ray_dis, Color.yellow);
 
         right_back_ray = new Ray(transform.localPosition - transform.forward * 0.4f, transform.right);
         Debug.DrawRay(transform.localPosition - transform.forward * 0.4f, transform.right * ray_dis, Color.green);
 
-        left_back_ray = new Ray(transform.localPosition - transform.forward * 0.4f, -transform.right);
-        Debug.DrawRay(transform.localPosition - transform.forward * 0.4f, -transform.right * ray_dis, Color.yellow);
+        foward_left_ray = new Ray(transform.localPosition - transform.right * 0.4f, transform.forward);
+        Debug.DrawRay(transform.localPosition - transform.right * 0.4f, transform.forward * ray_dis, Color.red);
+
+
 
 
 
@@ -54,7 +56,7 @@ public class RightControer : MonoBehaviour
                 turn(1);
             }
         }
-        else if(!Physics.Raycast(left_flont_ray,out left_flont_ray_hit, ray_dis)&& !Physics.Raycast(left_back_ray,out left_back_ray_hit, ray_dis))
+        else if(!Physics.Raycast(foward_right_ray,out foward_right_ray_hit, ray_dis)&& !Physics.Raycast(foward_left_ray,out foward_left_ray_hit, ray_dis))
         {
             if (istuan)
             {
@@ -81,7 +83,7 @@ public class RightControer : MonoBehaviour
             Debug.Log("stop");
             transform.position += transform.forward * 3 * Time.deltaTime;
         }
-        */
+
         
 
     }
