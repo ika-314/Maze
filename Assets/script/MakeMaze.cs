@@ -225,7 +225,7 @@ public class MakeMaze : MonoBehaviour
                 
                 if (m_map[idx] == MazeDataEnum.WALL)
                 {
-                    CreateWall(new Vector3(j - x_center, 0.0f, i - y_center));
+                   // CreateWall(new Vector3(j - x_center, 0.0f, i - y_center));
                 }
             }
         }
