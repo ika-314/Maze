@@ -19,7 +19,7 @@ public class RightControer : MonoBehaviour
     RaycastHit foward_left_ray_hit;
 
 
-    float ray_dis = 1;
+    float ray_dis = 0.55f;
 
     bool isGoing = false;
     bool istuan = true;
@@ -32,10 +32,12 @@ public class RightControer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int mask = 1 << 0;
+
         right_flont_ray = new Ray(transform.localPosition + transform.forward * 0.4f, transform.right);
         Debug.DrawRay(transform.localPosition + transform.forward * 0.4f, transform.right * ray_dis, Color.blue);
 
-        foward_right_ray = new Ray(transform.localPosition + transform.right * 0.4f, -transform.forward);
+        foward_right_ray = new Ray(transform.localPosition + transform.right * 0.4f, transform.forward);
         Debug.DrawRay(transform.localPosition + transform.right * 0.4f, transform.forward * ray_dis, Color.yellow);
 
         right_back_ray = new Ray(transform.localPosition - transform.forward * 0.4f, transform.right);
@@ -47,44 +49,55 @@ public class RightControer : MonoBehaviour
 
 
 
-
-        if (!Physics.Raycast(right_flont_ray, out right_flont_ray_hit, ray_dis)&& !Physics.Raycast(right_back_ray, out right_back_ray_hit, ray_dis))
+        //右が当たっている時
+        if (Physics.Raycast(right_flont_ray, out right_flont_ray_hit, ray_dis,mask)|| Physics.Raycast(right_back_ray, out right_back_ray_hit, ray_dis, mask))
+        {
+            Debug.Log("右が当たっている時");
+            //前が当たっている時
+            if (Physics.Raycast(foward_right_ray, out foward_right_ray_hit, ray_dis, mask) && Physics.Raycast(foward_left_ray, out foward_left_ray_hit, ray_dis, mask))
+            {
+                Debug.Log("前が当たっている時");
+                if (istuan)
+                {
+                    istuan = false;
+                    turn(-1);
+                    Debug.Log("左に回る");
+                }
+            }
+            else 
+            {
+                Debug.Log("前が当たっていない");
+                transform.position += transform.forward * 3 * Time.deltaTime;
+            }
+        }
+        else if(!(Physics.Raycast(right_flont_ray, out right_flont_ray_hit, ray_dis, mask) || Physics.Raycast(right_back_ray, out right_back_ray_hit, ray_dis, mask)))
         {
             if (istuan)
             {
+                Debug.Log("右に回る");
                 istuan = false;
                 turn(1);
             }
         }
-        else if(!Physics.Raycast(foward_right_ray,out foward_right_ray_hit, ray_dis)&& !Physics.Raycast(foward_left_ray,out foward_left_ray_hit, ray_dis))
-        {
-            if (istuan)
-            {
-                istuan = false;
-                turn(-1);
-            }
-        }
-        
-        transform.position += transform.forward * 3 *Time.deltaTime;
-        
-        
-    }
-
-    public void turn(int side)
-    {
-       
-        transform.rotation *= Quaternion.Euler(0, 90 * side, 0);
-        isGoing = true;
-        Invoke("stopFowrd", 1);
-
-        /*
         if (isGoing)
         {
             Debug.Log("stop");
             transform.position += transform.forward * 3 * Time.deltaTime;
         }
 
-        
+        Debug.Log(istuan);
+
+
+    }
+    
+
+    public void turn(int side)
+    {
+        Debug.Log("回転中");
+
+        transform.rotation *= Quaternion.Euler(0, 90 * side, 0);
+        isGoing = true;
+        Invoke("stopFowrd", 0.1f);
 
     }
     void stopFowrd()

@@ -30,7 +30,7 @@ public class MakeMaze : MonoBehaviour
     [SerializeField] GameObject Goal;
     [SerializeField] GameObject player;
     [SerializeField] GameObject random;
-    [SerializeField] GameObject player_object, AI_object, roght_object;
+    [SerializeField] GameObject player_object, AI_object, right_object;
  
 
     public int d = 0;
@@ -100,7 +100,7 @@ public class MakeMaze : MonoBehaviour
         goal_object = Instantiate(Goal, new Vector3(-startPosition.x,-1.0f,-startPosition.z), Quaternion.identity);//ゴールを端っこに配置
         Random_object = Instantiate(random, startPosition, Quaternion.identity);//ランダムくんを設置
         ai_1 = Instantiate(AI_object, startPosition, Quaternion.identity);//AIくんを設置
-        //Right = Instantiate(roght_object, startPosition, Quaternion.identity);//右壁君を設置       
+        Right = Instantiate(right_object, startPosition, Quaternion.identity);//右壁君を設置       
 
         //3Dの時　カメラ(プレイヤー）を配置
         if (d == 0)
@@ -115,7 +115,7 @@ public class MakeMaze : MonoBehaviour
             //プレイヤーをゴールの対角線上に配置        
             Player = Instantiate(player,startPosition, Quaternion.identity);
             Camera.SetActive(true);
-            //プレイアーのrigidbodyを習得
+            //プレイーのrigidbodyを習得
             Player_Rigidbody = Player.GetComponent<Rigidbody>();
         }
         //マウス消す
@@ -225,7 +225,7 @@ public class MakeMaze : MonoBehaviour
                 
                 if (m_map[idx] == MazeDataEnum.WALL)
                 {
-                   // CreateWall(new Vector3(j - x_center, 0.0f, i - y_center));
+                    CreateWall(new Vector3(j - x_center, 0.0f, i - y_center));
                 }
             }
         }

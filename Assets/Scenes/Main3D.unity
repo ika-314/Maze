@@ -846,7 +846,7 @@ MonoBehaviour:
   random: {fileID: 7798371380162198019, guid: 306eb3b6b9d424bfcaba11a74b89096e, type: 3}
   player_object: {fileID: 1883193809}
   AI_object: {fileID: 5685330289638808005, guid: b2437e54d3cb446edbcbefe7e1b930fb, type: 3}
-  roght_object: {fileID: 0}
+  right_object: {fileID: 1939308284412536882, guid: e2386ff25e6c74c1b84c8d39697363d7, type: 3}
   d: 0
   startPosition: {x: 0, y: 0, z: 0}
   timertext: {fileID: 485295141}
