@@ -52,21 +52,17 @@ public class RightControer : MonoBehaviour
         //右が当たっている時
         if (Physics.Raycast(right_flont_ray, out right_flont_ray_hit, ray_dis,mask)|| Physics.Raycast(right_back_ray, out right_back_ray_hit, ray_dis, mask))
         {
-            Debug.Log("右が当たっている時");
             //前が当たっている時
             if (Physics.Raycast(foward_right_ray, out foward_right_ray_hit, ray_dis, mask) && Physics.Raycast(foward_left_ray, out foward_left_ray_hit, ray_dis, mask))
             {
-                Debug.Log("前が当たっている時");
-                if (istuan)
+               　if (istuan)
                 {
                     istuan = false;
-                    turn(-1);
-                    Debug.Log("左に回る");
+                    turn(-1); 
                 }
             }
             else 
             {
-                Debug.Log("前が当たっていない");
                 transform.position += transform.forward * 3 * Time.deltaTime;
             }
         }
@@ -74,27 +70,20 @@ public class RightControer : MonoBehaviour
         {
             if (istuan)
             {
-                Debug.Log("右に回る");
                 istuan = false;
                 turn(1);
             }
         }
         if (isGoing)
         {
-            Debug.Log("stop");
             transform.position += transform.forward * 3 * Time.deltaTime;
         }
-
-        Debug.Log(istuan);
-
 
     }
     
 
     public void turn(int side)
     {
-        Debug.Log("回転中");
-
         transform.rotation *= Quaternion.Euler(0, 90 * side, 0);
         isGoing = true;
         Invoke("stopFowrd", 0.1f);
