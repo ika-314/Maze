@@ -259,6 +259,9 @@ MonoBehaviour:
   m_width: 18
   m_height: 18
   startPosition: {x: 0, y: 0, z: 0}
+  timertext: {fileID: 0}
+  randomtext: {fileID: 0}
+  Timer: 0
 --- !u!4 &243574885
 Transform:
   m_ObjectHideFlags: 0
@@ -867,7 +870,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "3D\u203B\u672A\u5B9F\u88C5"
+  m_Text: "3D\u203B\u672A\u5B9F\u88C5\uFF08\u5B9F\u88C5\u6E08\uFF09"
 --- !u!222 &754374851
 CanvasRenderer:
   m_ObjectHideFlags: 0
