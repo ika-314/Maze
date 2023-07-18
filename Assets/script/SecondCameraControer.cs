@@ -25,9 +25,4 @@ public class SecondCameraControer : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

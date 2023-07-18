@@ -24,13 +24,7 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
         base.Awake();
         DontDestroyOnLoad(this);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+ 
     void Update()
     {
         startPosition = new Vector3((m_width / 2 - 1) * -1, -0.5f, ((int)m_height / 2 - 1) * -1);

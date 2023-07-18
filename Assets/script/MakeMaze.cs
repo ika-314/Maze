@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 // 穴掘り法
 
 public class MakeMaze : MonoBehaviour
@@ -69,13 +68,8 @@ public class MakeMaze : MonoBehaviour
             instance = this;
         }
 
-
-        //if (text.h_value.value != null)
-        //{
-            m_height = MazeData.Instance.m_height;
-            m_width = MazeData.Instance.m_width;
-        //}
-
+         m_height = MazeData.Instance.m_height;
+        m_width = MazeData.Instance.m_width;
     }
     // Start is called before the first frame update
     void Start()
@@ -126,13 +120,9 @@ public class MakeMaze : MonoBehaviour
 
     void Update()
     {
-        
         //タイマー
-        timer();
-
-        
+        timer();   
     }
-
 
     // 穴掘り法
     private void DigMap()

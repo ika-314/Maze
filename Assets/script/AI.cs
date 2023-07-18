@@ -15,19 +15,12 @@ public class AI: MonoBehaviour
     private void Start()
     {		
 		goal = new Vector3(-MazeData.Instance.startPosition.x, MazeData.Instance.startPosition.y, -MazeData.Instance.startPosition.z);
-		
+		a.speed = 4f;
 
 	}
 	void Update()
 	{
-		//Debug.Log("X:" + -MazeData.Instance.startPosition.x);
-		//Debug.Log("Y:" + MazeData.Instance.startPosition.y);
-		//Debug.Log("Z:" + -MazeData.Instance.startPosition.z);
 		a.SetDestination(goal);
-		//GetComponent<Animator>().SetFloat("Speed", a.velocity.magnitude);
-
-		// 移動量の取得
-		//Debug.Log(a.velocity.magnitude);
 	}
 
 }

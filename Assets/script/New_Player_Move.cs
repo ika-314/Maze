@@ -33,6 +33,7 @@ public class New_Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        minmap_Camera.SetActive(false);
         //前
         front_ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(transform.position, transform.forward * ray_dis, Color.blue);
@@ -80,6 +81,13 @@ public class New_Player_Move : MonoBehaviour
         {
             transform.rotation *= Quaternion.Euler(0, -playerRotation, 0);
         }
-        minCamera.transform.position = new Vector3(transform.position.x, 10, transform.position.z);
+        if (Physics.Raycast(front_ray, out front_ray_hit, ray_dis))
+        {
+            if(front_ray_hit.collider.tag == "Wall")
+            {
+                minmap_Camera.SetActive(true);
+            }
+        }
+        minCamera.transform.position = new Vector3(transform.position.x, 10, transform.position.z);        
     }
 }

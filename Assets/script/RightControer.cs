@@ -23,6 +23,8 @@ public class RightControer : MonoBehaviour
 
     bool isGoing = false;
     bool istuan = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +65,7 @@ public class RightControer : MonoBehaviour
             }
             else 
             {
-                transform.position += transform.forward * 3 * Time.deltaTime;
+                transform.position += transform.forward * 2 * Time.deltaTime;
             }
         }
         else if(!(Physics.Raycast(right_flont_ray, out right_flont_ray_hit, ray_dis, mask) || Physics.Raycast(right_back_ray, out right_back_ray_hit, ray_dis, mask)))
@@ -76,7 +78,7 @@ public class RightControer : MonoBehaviour
         }
         if (isGoing)
         {
-            transform.position += transform.forward * 3 * Time.deltaTime;
+            transform.position += transform.forward * 2 * Time.deltaTime;
         }
 
     }
