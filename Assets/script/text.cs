@@ -12,10 +12,15 @@ public class text : MonoBehaviour
     public Slider n_width;
     public Button fps;
     public Button Dyu;
+    public Button mode;
     public Text height_text;
     public Text width_text;
     public static Slider h_value;
     public static Slider w_value;
+    public Text mode_text;
+
+    int i = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +30,7 @@ public class text : MonoBehaviour
         w_value = n_width.GetComponent<Slider>();
         width_text = width_text.GetComponent<Text>();
         height_text = height_text.GetComponent<Text>();
+        mode_text = mode_text.GetComponent<Text>();
         
     }
 
@@ -33,7 +39,29 @@ public class text : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        if(i == 0)
+        {
+            mode_text.text = "難易度：イージー";
+            w_value.value = 11;
+            h_value.value = 11;
+
+
+        }else if(i == 1)
+        {
+            mode_text.text = "難易度：ノーマル";
+            w_value.value = 33;
+            h_value.value = 33;
+        }else if(i == 2)
+        {
+            mode_text.text = "難易度：ハード";
+            w_value.value = 75;
+            h_value.value = 75;
+        }else if(i == 3)
+        {
+            mode_text.text = "難易度：フリー";
+        }
     }
+
      public void Fps()
     {
         SceneManager.LoadScene("Main");
@@ -41,6 +69,17 @@ public class text : MonoBehaviour
     　public void dyu()
     {
         SceneManager.LoadScene("Main3D");
+    }
+      public void Mode()
+    {
+         if(i < 3)
+        {
+            i++;
+        }
+        else
+        {
+            i = 0;
+        }
     }
     public void height()
     {

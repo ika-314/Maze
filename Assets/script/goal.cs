@@ -10,15 +10,15 @@ public class goal : MonoBehaviour
 {
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("a");
+        //Debug.Log("a");
         //プレイヤー
         if (collision.gameObject.layer == 1)
         {
-            Debug.Log("l");
+            //Debug.Log("l");
             SceneManager.LoadScene("Gool");
         }
         
-        if(collision.gameObject.layer == 6)
+        if(collision.gameObject.layer == 7)
         {
             Debug.Log("B");
             //ランダム
@@ -29,7 +29,22 @@ public class goal : MonoBehaviour
                 
             }
         }
-        
+        if (collision.gameObject.layer == 6)
+        {
+            Debug.Log("B");
+            //ランダム
+            if (collision.gameObject.name == "AI(Clone)")
+            {
+                Debug.Log("C");
+                MakeMaze.instance.TimerCounter("AI");
+
+            }
+            if(collision.gameObject.name == "Right(Clone)")
+            {
+                MakeMaze.instance.TimerCounter("Right");
+            }
+        }
+
     }
     
 }

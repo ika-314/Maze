@@ -6,6 +6,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+
+   `  -MMMMMMMF MMMMMMMMMMMMMMMMMMMMNNg,   `  `
+      -MMMMMMMF MMMMMMMMMMMMMMMMMMMMMMMMM&
+   `  -MNMNNMNF MMMMMMMMMMMMMMMMMMMMMMMMMMb     `
+ `    -MMNMMNMF MMMMMMMMMMMMMMMMMMMMMMMMMMM[ `
+      -MMMMMMNF ?777777777MMMMMMMN777777777'
+   `  -MNNMNMMF jttttttt_.MMMMMMMN, ggggggg]  `
+      -MMMNMNMF zttttttt_.MMMMMMMN ,@g@g@@@]
+   `  -MNMMMNMF zttttttt_.MMMMMMMN -@@g@g@g]    `
+      -MMNMNMMF zttttttt_.MMMMMMMN ,g@@g@@@]  `
+ `  ` -MNMMNMMF _~~~~~~~ .MMMMMMMN -@g@@g@@]
+   `  -MMNMMNMF jttttttt_.MMMMMMMN -g@g@gg@]   `
+      -MNMMNMMF zttttttt_.MMMMMMMN -@g@@@g@]  `
+   `  -MMNMMNMF zttttttt_.MMMMMMMN -@g@g@@g]
+ `    -MNMMNMMF zttttrtt_.MMMMMMMN -g@g@g@@]    `
+    ` -MMNMMNMF zttrtttt_.MMMMMMMN -@g@@g@@]  `
+      -MNMMNMMF zttttttt_.MMMMMMMN -@g@g@g@]
+ `  ` -MMNMMNMF zttttttt_.MMMMMMMN -ggggggg]  `
+      -MNMMNMMb...........MMMMMMMN .........    `
+   `  ,MMNMMNMMMMNMMMMNM}.MMMMMMMN -@@@@@@@]
+    `  WMMNMMNMNMMNMMNMM}.MMMMMMMN -@@@@@@@] `  `
+ `      7MMNMMNMMNMMNMMM}.MMMMMMMN -@@@@@@@]
+   `  `   ?"MMMMMNMMMNMM}.MMMMMMMN -@@@@@@@]  `
+
+     */
+
 // 穴掘り法
 
 public class MakeMaze : MonoBehaviour
@@ -45,7 +72,7 @@ public class MakeMaze : MonoBehaviour
     private int idx;
 
     //タイマーデータ
-    public Text timertext,randomtext;
+    public Text timertext,randomtext,AItext,Righttext;
     public float Timer = 0;
 
     //オブジェクト定義
@@ -69,7 +96,7 @@ public class MakeMaze : MonoBehaviour
         }
 
          m_height = MazeData.Instance.m_height;
-        m_width = MazeData.Instance.m_width;
+         m_width = MazeData.Instance.m_width;
     }
     // Start is called before the first frame update
     void Start()
@@ -255,7 +282,18 @@ public class MakeMaze : MonoBehaviour
     public void TimerCounter(String the)
     {
         Debug.Log(the +  ":" + (Math.Floor(Timer * 10) / 10));
-        randomtext.text =　the + ":" + (Math.Floor(Timer * 10) / 10).ToString();
+        if (the == "ランダム")
+        {
+            randomtext.text = the + ":" + (Math.Floor(Timer * 10) / 10).ToString();
+        }
+        if (the == "AI")
+        {
+            AItext.text = the + ":" + (Math.Floor(Timer * 10) / 10).ToString();
+        }
+        if (the == "Right")
+        {
+            Righttext.text = the + ":" + (Math.Floor(Timer * 10) / 10).ToString();
+        }
     }
 
     //タイマー
