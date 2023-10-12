@@ -88,6 +88,8 @@ public class MakeMaze : MonoBehaviour
 
     public static MakeMaze instance;    //関数に外部からアクセス
 
+    int n = 0;
+
     public void Awake()
     {
         if (instance == null)
@@ -281,18 +283,34 @@ public class MakeMaze : MonoBehaviour
     //タイマーストップ
     public void TimerCounter(String the)
     {
+
+        
         Debug.Log(the +  ":" + (Math.Floor(Timer * 10) / 10));
         if (the == "ランダム")
         {
-            randomtext.text = the + ":" + (Math.Floor(Timer * 10) / 10).ToString();
+            n++;
+            Destroy(Random_object);
         }
         if (the == "AI")
         {
-            AItext.text = the + ":" + (Math.Floor(Timer * 10) / 10).ToString();
+            n++;
+            Destroy(ai_1);
         }
         if (the == "Right")
         {
-            Righttext.text = the + ":" + (Math.Floor(Timer * 10) / 10).ToString();
+            n++;           
+            Destroy(Right);
+        }
+        if (n == 1)
+        {
+            randomtext.text = the + ":" + Timer.ToString("F1");
+        }else if (n == 2)
+        {
+            AItext.text = the + ":" + Timer.ToString("F1");
+        }
+        else if( n == 3)
+        {
+            Righttext.text = the + ":" + Timer.ToString("F1");
         }
     }
 
@@ -300,6 +318,6 @@ public class MakeMaze : MonoBehaviour
     private void timer()
     {        
         Timer = Timer + Time.deltaTime;
-        timertext.text = "Time:" + (Math.Floor(Timer * 10) / 10).ToString();
+        timertext.text = "Time:" + Timer.ToString("F1");
     }
 }
