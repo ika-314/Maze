@@ -19,6 +19,8 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
     public Text timertext, randomtext;
     public float Timer = 0;
 
+    public static MazeData instance;    //関数に外部からアクセス
+
     protected override void Awake()
     {
         base.Awake();
@@ -36,4 +38,5 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
 
         }
     }
+
 }
