@@ -18,7 +18,7 @@ public class goal : MonoBehaviour
             SceneManager.LoadScene("Gool");
         }
         
-        if(collision.gameObject.layer == 7)
+        if(collision.gameObject.layer == 6)
         {
             Debug.Log("B");
             //ランダム

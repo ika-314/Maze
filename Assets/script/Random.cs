@@ -14,7 +14,7 @@ public class Random : MonoBehaviour
     }
     Direction direction;
 
-    float playerSpeed　= 3;
+    float playerSpeed = 3;
 
 
     Ray right_ray;
@@ -32,6 +32,8 @@ public class Random : MonoBehaviour
     float ray_dis = 1f;
     int i = 0;
 
+    float delay_random = 0;
+
     List<Direction> hitList = new List<Direction>();
 
 
@@ -40,20 +42,28 @@ public class Random : MonoBehaviour
     {
 
         right_ray = new Ray(transform.localPosition, transform.right);
-        Debug.DrawRay(transform.localPosition , transform.right * ray_dis, Color.blue);
+        Debug.DrawRay(transform.localPosition, transform.right * ray_dis, Color.blue);
 
         foward_ray = new Ray(transform.localPosition, transform.forward);
-        Debug.DrawRay(transform.localPosition , transform.forward * ray_dis, Color.yellow);
+        Debug.DrawRay(transform.localPosition, transform.forward * ray_dis, Color.yellow);
 
         back_ray = new Ray(transform.localPosition, -transform.forward);
-        Debug.DrawRay(transform.localPosition , transform.forward * -ray_dis, Color.green);
+        Debug.DrawRay(transform.localPosition, transform.forward * -ray_dis, Color.green);
 
-        left_ray = new Ray(transform.localPosition , -transform.right);
-        Debug.DrawRay(transform.localPosition , transform.right * -ray_dis, Color.red);
+        left_ray = new Ray(transform.localPosition, -transform.right);
+        Debug.DrawRay(transform.localPosition, transform.right * -ray_dis, Color.red);
         //ランダムくん動き
         // transform.position += new Vector3((int)UnityEngine.Random.Range(-playerSpeed, playerSpeed) * Time.deltaTime, 0, (int)UnityEngine.Random.Range(-playerSpeed, playerSpeed) * Time.deltaTime);
 
-        Invoke("Sarch", 0.33f);
+        //Invoke("Sarch", 1f);
+        //Sarch();
+        delay_random += Time.deltaTime;
+        if(delay_random >= 0.333)
+        {
+            delay_random = 0;
+            Sarch();
+        }
+
     }
 
     public void Sarch()
@@ -64,37 +74,70 @@ public class Random : MonoBehaviour
             
             hitList.Add(Direction.RIGHT);
         }*/
-
+        //右
         if (!Physics.Raycast(right_ray, out right_ray_hit, ray_dis))
         {
             hitList.Add(Direction.RIGHT);
         }
+        else if (Physics.Raycast(right_ray, out right_ray_hit))
+        {
+            if (right_ray_hit.collider.gameObject.tag != "Wall")
+            {
+                hitList.Add(Direction.RIGHT);
+            }
+        }
+
+        //左
         if (!Physics.Raycast(left_ray, out left_ray_hit, ray_dis))
         {
             hitList.Add(Direction.LEFT);
         }
+        else if (Physics.Raycast(left_ray, out left_ray_hit))
+        {
+            if (left_ray_hit.collider.gameObject.tag != "Wall")
+            {
+                hitList.Add(Direction.LEFT);
+            }
+        }
+        // うしろ
         if (!Physics.Raycast(back_ray, out back_ray_hit, ray_dis))
         {
             hitList.Add(Direction.BACK);
         }
+        else if (Physics.Raycast(back_ray, out back_ray_hit))
+        {
+            if (back_ray_hit.collider.gameObject.tag != "Wall")
+            {
+                hitList.Add(Direction.BACK);
+            }
+        }
+
+        //前
         if (!Physics.Raycast(foward_ray, out foward_ray_hit, ray_dis))
         {
             hitList.Add(Direction.FOWARD);
         }
-
+        else if (Physics.Raycast(foward_ray, out foward_ray_hit))
+        {
+            if (foward_ray_hit.collider.gameObject.tag != "Wall")
+            {
+                hitList.Add(Direction.FOWARD);
+            }
+        }
         System.Random rnd = new System.Random();
         int randIndex = rnd.Next(hitList.Count);
         direction = hitList[randIndex];
 
         Move(direction);
 
-        //Invoke("stopFowrd", 0.33f);
+        //Invoke("Move(direction)", 0.33f);
+        hitList.Clear();
 
     }
 
-    private void Move(Direction direction)
+    void Move(Direction direction)
     {
-        if(direction == Direction.LEFT)
+        if (direction == Direction.LEFT)
         {
             transform.position += new Vector3(-1, 0, 0);
         }
