@@ -290,27 +290,46 @@ public class MakeMaze : MonoBehaviour
         {
             n++;
             Destroy(Random_object);
+            MazeData.random = false;
         }
         if (the == "AI")
         {
             n++;
             Destroy(ai_1);
+            MazeData.AI = false;
         }
         if (the == "Right")
         {
-            n++;           
+            n++;
             Destroy(Right);
+            MazeData.right = false;
+        }
+        if (the == "Player"){
+            n++;
+            MazeData.player = false;
         }
         if (n == 1)
         {
             randomtext.text = the + ":" + Timer.ToString("F1");
-        }else if (n == 2)
+
+            MazeData.firsttext.text = Timer.ToString("F1") + "(" + the + ")";
+
+        }
+        else if (n == 2)
         {
             AItext.text = the + ":" + Timer.ToString("F1");
+
+            MazeData.secondtext.text = Timer.ToString("F1") + "(" + the + ")";
         }
         else if( n == 3)
         {
             Righttext.text = the + ":" + Timer.ToString("F1");
+
+            MazeData.thirdtext.text = Timer.ToString("F1") + "(" + the + ")";
+        }
+        else if (n == 4)
+        {
+            MazeData.fourthtext.text = Timer.ToString("F1") + "("+the+")";
         }
     }
 

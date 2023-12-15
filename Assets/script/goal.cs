@@ -15,6 +15,7 @@ public class goal : MonoBehaviour
         if (collision.gameObject.layer == 1)
         {
             //Debug.Log("l");
+            MakeMaze.instance.TimerCounter("Player");
             SceneManager.LoadScene("Gool");
         }
         

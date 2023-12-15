@@ -16,15 +16,22 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
     public Vector3 startPosition;
 
     //タイマーデータ
-    public Text timertext, randomtext;
+    public static Text firsttext, secondtext, thirdtext, fourthtext;
+    public static bool player, random, right, AI;
     public float Timer = 0;
 
     public static MazeData instance;    //関数に外部からアクセス
+
+    int n = 0;
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
+        player = true;
+        random = true;
+        right = true;
+        AI = true;
     }
  
     void Update()
@@ -38,5 +45,6 @@ public class MazeData : SingletonMonoBehaviour<MazeData>
 
         }
     }
+    
 
 }
